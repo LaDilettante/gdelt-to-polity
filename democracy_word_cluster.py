@@ -1,4 +1,5 @@
 import csv
+import re
 
 csvfile = open('./data/brazil_2012_stories.csv', 'r')
 reader = csv.reader(csvfile)
@@ -11,8 +12,9 @@ story_dict = dict((word, []) for word in words)
 
 total_article = 0
 for row in reader:
+    stories_words = re.findall(r"[\w]+", row[text_index])
     for key in count_dict.keys():
-        if key in row[text_index]:
+        if key in stories_words:
             count_dict[key][0] += 1
             story_dict[key].append(row[0])
     total_article += 1
