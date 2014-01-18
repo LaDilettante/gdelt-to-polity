@@ -1,0 +1,11 @@
+.DS_Store
+*.pdf
+/data/*.pdf
+/data/*.zip
+/data/*.txt
+/data/.Rapp.history
+/data/*.rda
+/data/*.csv
+/data/*.tsv
+/data/*.*.gz
+/data/zips/*.zip
