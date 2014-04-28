@@ -4,9 +4,14 @@ import re
 csvfile = open('./data/brazil_2012_stories.csv', 'r')
 reader = csv.reader(csvfile)
 
+# The column containing stories is called "RawText"
 text_index = reader.next().index('RawText')
 
+# Supply the words we want to count
 words = ["cooperation", "negotiation", "peace", "war"]
+
+# Create the dictionary. count_dict stores the frequency, 
+# story_dict stores the indices of stories containing wanted words
 count_dict = dict((word, [0, 0]) for word in words)
 story_dict = dict((word, []) for word in words)
 
@@ -25,11 +30,12 @@ for key in count_dict.keys():
 
 print count_dict
 
+# Write frequency and stories indices to a csv
 csvoutput = open('democracy_cluster_output.csv', 'wb')
 writer = csv.writer(csvoutput)
-
 for key, value in count_dict.items():
     writer.writerow([key, value[0], value[1], story_dict[key]])
-    
+
+# Closing files
 csvfile.close()
 csvoutput.close()
